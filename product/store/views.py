@@ -13,8 +13,8 @@ from store.serializers import ProductSerializer, UserProductRelationSerializer
 
 class ProductViewSet(ModelViewSet):
     queryset = Product.objects.all().annotate(
-            annotated_likes=Count(Case(When(userproductrelation__like=True, then=1))),
-            rating=Avg('userproductrelation__rate')
+        annotated_likes=Count(Case(When(userproductrelation__like=True, then=1))),
+        rating=Avg('userproductrelation__rate')
     )
     serializer_class = ProductSerializer
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
@@ -42,3 +42,7 @@ class UserProductRelationViewSet(UpdateModelMixin, GenericViewSet):
 
 def auth(request):
     return render(request, 'oauth.html')
+
+
+def index(request):
+    return render(request, 'index.html')
