@@ -12,6 +12,7 @@ router.register(r'productrelation', UserProductRelationViewSet)
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('header/', views.header, name='header'),
     path('home/', views.home, name='home'),
     path('admin/', admin.site.urls),
     re_path('', include('social_django.urls', namespace='social')),
